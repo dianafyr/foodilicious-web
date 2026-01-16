@@ -5,85 +5,286 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foodilicious - Café hopper Christy</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
-        .matcha-green {
-            color: #7cb342;
+        * {
+            font-family: 'Inter', sans-serif;
         }
-        .matcha-bg {
-            background-color: #c5e1a5;
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
-        .matcha-dark {
-            background-color: #7cb342;
+
+        /* Color Variables */
+        :root {
+            --strawberry-red: #C51E3A;
+            --matcha-green: #7CB342;
+            --cream-bg: #FEF9F3;
+            --dark-text: #1a1a1a;
+        }
+
+        body {
+            background-color: #FEF9F3;
+            color: #1a1a1a;
+        }
+
+        /* Glass Effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Primary Button Transition */
+        .btn-primary {
+            background-color: #C51E3A;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #7CB342;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(197, 30, 58, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Secondary Button */
+        .btn-secondary {
+            background-color: #7CB342;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #C51E3A;
+            transform: translateY(-2px);
+        }
+
+        /* Text Colors */
+        .text-strawberry {
+            color: #C51E3A;
+        }
+
+        .text-matcha {
+            color: #7CB342;
+        }
+
+        /* Accent Underline */
+        .accent-underline {
+            position: relative;
+            display: inline-block;
+        }
+
+        .accent-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #C51E3A, #7CB342);
+            border-radius: 2px;
+        }
+
+        /* Card Shadow */
+        .card-shadow {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .card-shadow:hover {
+            box-shadow: 0 20px 40px rgba(197, 30, 58, 0.15);
+            transform: translateY(-4px);
+        }
+
+        /* Diagonal Section */
+        .diagonal-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diagonal-shape {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(135deg, #C51E3A 0%, #7CB342 100%);
+            transform: rotate(15deg) translateY(-50%);
+            opacity: 0.1;
+        }
+
+        /* Image Hover Effect */
+        .image-hover {
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .image-hover img {
+            transition: transform 0.4s ease;
+        }
+
+        .image-hover:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
-<body class="bg-white">
+<body>
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 matcha-bg shadow-md">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-3xl font-bold matcha-green">🍵 Foodilicious</h1>
-            <div class="space-x-6">
-                <a href="#menu" class="hover:matcha-green transition">Menu</a>
-                <a href="#asmr" class="hover:matcha-green transition">ASMR Challenge</a>
-                <a href="#telegram" class="hover:matcha-green transition">Community</a>
+    <nav class="sticky top-0 z-50 glass-effect border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <span class="text-3xl">🍵</span>
+                    <h1 class="text-2xl font-bold text-strawberry">Foodilicious</h1>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#menu" class="text-gray-700 font-medium hover:text-strawberry transition duration-300">Menu</a>
+                    <a href="#asmr" class="text-gray-700 font-medium hover:text-matcha transition duration-300">ASMR Challenge</a>
+                    <a href="#community" class="text-gray-700 font-medium hover:text-strawberry transition duration-300">Community</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button class="text-gray-700 hover:text-strawberry">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="matcha-bg min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-10 left-10 text-8xl">🍵</div>
-            <div class="absolute bottom-10 right-10 text-8xl">🍓</div>
-        </div>
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <h2 class="text-7xl font-bold matcha-green mb-4">Café hopper Christy</h2>
-            <p class="text-2xl text-gray-700 mb-8">Welcome to the ultimate matcha experience!</p>
-            <p class="text-xl text-gray-600 mb-12">Explore our handcrafted beverages and join our vibrant food community.</p>
-            <a href="#menu" class="inline-block matcha-dark text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition">
-                Explore Menu
-            </a>
+    <!-- Hero Section - Split Screen Design -->
+    <section class="diagonal-section min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-br from-gray-50 to-orange-50 relative overflow-hidden">
+        <div class="diagonal-shape"></div>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
+            <!-- Left: Image Section -->
+            <div class="image-hover">
+                <div class="aspect-square rounded-2xl bg-gradient-to-br from-pink-200 to-red-200 flex items-center justify-center text-9xl">
+                    🍓
+                </div>
+            </div>
+
+            <!-- Right: CTA Section -->
+            <div class="space-y-6">
+                <div>
+                    <span class="text-strawberry font-bold text-sm uppercase tracking-widest">Welcome to</span>
+                    <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mt-2">
+                        Café hopper <span class="text-strawberry">Christy</span>
+                    </h2>
+                </div>
+
+                <p class="text-xl text-gray-600 leading-relaxed">
+                    Discover the ultimate matcha experience with our handcrafted beverages and premium food selections.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#menu" class="btn-primary text-white px-8 py-4 rounded-xl font-bold text-lg text-center">
+                        Explore Menu
+                    </a>
+                    <a href="#asmr" class="btn-secondary text-white px-8 py-4 rounded-xl font-bold text-lg text-center">
+                        Join the Challenge
+                    </a>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="flex gap-8 pt-4">
+                    <div class="text-center">
+                        <p class="text-3xl font-bold text-strawberry">500+</p>
+                        <p class="text-sm text-gray-600">Happy Customers</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-3xl font-bold text-matcha">1K+</p>
+                        <p class="text-sm text-gray-600">ASMR Views</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Menu Section -->
-    <section id="menu" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-5xl font-bold text-center matcha-green mb-16">Our Signature Menu</h2>
+    <section id="menu" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="text-strawberry font-bold text-sm uppercase tracking-widest">Our Collections</span>
+                <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mt-3">
+                    Premium <span class="accent-underline">Menu Items</span>
+                </h2>
+                <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Handcrafted with passion, designed for your taste
+                </p>
+            </div>
+
+            <!-- Product Cards Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Strawberry Matcha -->
-                <div class="bg-pink-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition transform hover:scale-105">
-                    <div class="bg-gradient-to-r from-pink-300 to-red-300 h-40 flex items-center justify-center text-6xl">
+                <!-- Strawberry Matcha Card -->
+                <div class="card-shadow bg-white rounded-2xl overflow-hidden">
+                    <div class="aspect-square bg-gradient-to-br from-pink-300 to-red-300 flex items-center justify-center text-8xl">
                         🍓
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-pink-600 mb-2">Strawberry Matcha</h3>
-                        <p class="text-gray-700 mb-4">A delightful blend of premium matcha and fresh strawberry puree. Perfect for a refreshing afternoon treat.</p>
-                        <p class="text-lg font-semibold matcha-green">$6.99</p>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Strawberry Matcha</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            A delightful blend of premium matcha whisked with fresh strawberry puree. Perfect for a refreshing afternoon treat.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-3xl font-bold text-strawberry">$6.99</span>
+                            <button class="btn-primary text-white px-6 py-3 rounded-xl font-bold">
+                                Add to Cart
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Lemon-zade -->
-                <div class="bg-yellow-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition transform hover:scale-105">
-                    <div class="bg-gradient-to-r from-yellow-300 to-orange-300 h-40 flex items-center justify-center text-6xl">
+                <!-- Lemon-zade Card -->
+                <div class="card-shadow bg-white rounded-2xl overflow-hidden">
+                    <div class="aspect-square bg-gradient-to-br from-yellow-300 to-orange-300 flex items-center justify-center text-8xl">
                         🍋
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-yellow-600 mb-2">Lemon-zade</h3>
-                        <p class="text-gray-700 mb-4">A zesty and refreshing citrus drink that perfectly complements our matcha selection. Energize your day!</p>
-                        <p class="text-lg font-semibold matcha-green">$5.99</p>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Lemon-zade</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            A zesty and refreshing citrus drink that perfectly complements our matcha selection. Energize your day!
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-3xl font-bold text-strawberry">$5.99</span>
+                            <button class="btn-primary text-white px-6 py-3 rounded-xl font-bold">
+                                Add to Cart
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Ice Cream Cakes -->
-                <div class="bg-blue-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition transform hover:scale-105">
-                    <div class="bg-gradient-to-r from-purple-300 to-pink-300 h-40 flex items-center justify-center text-6xl">
+                <!-- Ice Cream Cakes Card -->
+                <div class="card-shadow bg-white rounded-2xl overflow-hidden">
+                    <div class="aspect-square bg-gradient-to-br from-purple-300 to-pink-300 flex items-center justify-center text-8xl">
                         🍰
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-purple-600 mb-2">Ice Cream Cakes</h3>
-                        <p class="text-gray-700 mb-4">Indulge in our premium ice cream cakes with matcha, strawberry, or lemon flavors. A sweet ending to every visit.</p>
-                        <p class="text-lg font-semibold matcha-green">$8.99</p>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Ice Cream Cakes</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Indulge in our premium ice cream cakes with matcha, strawberry, or lemon flavors. A sweet ending.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-3xl font-bold text-strawberry">$8.99</span>
+                            <button class="btn-primary text-white px-6 py-3 rounded-xl font-bold">
+                                Add to Cart
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -91,86 +292,247 @@
     </section>
 
     <!-- ASMR Challenge Section -->
-    <section id="asmr" class="py-20 matcha-bg">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-5xl font-bold text-center matcha-green mb-8">#FoodiliciousASMRchallenge</h2>
-            <div class="bg-white rounded-lg shadow-lg p-8 mb-12">
-                <p class="text-xl text-gray-700 mb-6">
-                    Join the viral sensation! Experience the calming and satisfying sounds of preparing our signature beverages. 
-                    Record your own ASMR moment with Foodilicious and use #FoodiliciousASMRchallenge to be featured in our community gallery.
+    <section id="asmr" class="py-24 bg-gradient-to-br from-gray-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="text-matcha font-bold text-sm uppercase tracking-widest">Join the Movement</span>
+                <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mt-3">
+                    #FoodiliciousASMR<span class="text-strawberry">challenge</span>
+                </h2>
+                <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Experience the soothing sounds of our premium beverages. Share your ASMR moment!
                 </p>
-                <ul class="space-y-4 text-lg text-gray-700">
-                    <li class="flex items-start">
-                        <span class="matcha-green mr-4 text-2xl">✓</span>
-                        <span>Capture the soothing sounds of matcha whisking</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="matcha-green mr-4 text-2xl">✓</span>
-                        <span>Record the satisfying pour of our drinks</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="matcha-green mr-4 text-2xl">✓</span>
-                        <span>Share your experience with our community</span>
-                    </li>
-                </ul>
             </div>
 
-            <!-- Video Gallery Placeholder -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white rounded-lg shadow-md overflow-hidden aspect-video flex items-center justify-center hover:shadow-lg transition">
-                    <div class="text-center">
-                        <p class="text-6xl mb-4">🎬</p>
-                        <p class="text-gray-600 font-semibold">Your ASMR Here</p>
+            <!-- Challenge Description -->
+            <div class="bg-white rounded-2xl card-shadow p-8 md:p-12 mb-12">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Why Join?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-strawberry text-white">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-gray-900">Capture Relaxation</h4>
+                            <p class="text-gray-600 mt-2">Record the soothing sounds of our matcha whisking and premium drink preparations.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-matcha text-white">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-gray-900">Get Featured</h4>
+                            <p class="text-gray-600 mt-2">Your best ASMR videos will be featured in our community gallery and social channels.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-12 w-12 rounded-full bg-strawberry text-white">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-gray-900">Win Prizes</h4>
+                            <p class="text-gray-600 mt-2">Monthly prizes for the most creative ASMR submissions. Monthly winner gets $50 voucher!</p>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-md overflow-hidden aspect-video flex items-center justify-center hover:shadow-lg transition">
-                    <div class="text-center">
-                        <p class="text-6xl mb-4">🎥</p>
-                        <p class="text-gray-600 font-semibold">Community Videos</p>
+            </div>
+
+            <!-- Video Gallery -->
+            <div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-8">Video Gallery</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Placeholder Video 1 -->
+                    <div class="card-shadow bg-white rounded-2xl overflow-hidden aspect-video flex items-center justify-center group cursor-pointer">
+                        <div class="text-center">
+                            <div class="text-5xl mb-4 group-hover:scale-110 transition">🎬</div>
+                            <p class="text-gray-700 font-semibold">Matcha Whisking</p>
+                            <p class="text-sm text-gray-500">@christy_vibes</p>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder Video 2 -->
+                    <div class="card-shadow bg-white rounded-2xl overflow-hidden aspect-video flex items-center justify-center group cursor-pointer">
+                        <div class="text-center">
+                            <div class="text-5xl mb-4 group-hover:scale-110 transition">🎥</div>
+                            <p class="text-gray-700 font-semibold">Lemon Pour</p>
+                            <p class="text-sm text-gray-500">@community_favorite</p>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder Video 3 -->
+                    <div class="card-shadow bg-white rounded-2xl overflow-hidden aspect-video flex items-center justify-center group cursor-pointer">
+                        <div class="text-center">
+                            <div class="text-5xl mb-4 group-hover:scale-110 transition">📱</div>
+                            <p class="text-gray-700 font-semibold">Ice Cream Mixing</p>
+                            <p class="text-sm text-gray-500">Share Your Video</p>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-md overflow-hidden aspect-video flex items-center justify-center hover:shadow-lg transition">
-                    <div class="text-center">
-                        <p class="text-6xl mb-4">📱</p>
-                        <p class="text-gray-600 font-semibold">Share Your Moment</p>
-                    </div>
-                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="text-center mt-12">
+                <button class="btn-primary text-white px-10 py-4 rounded-xl font-bold text-lg inline-block">
+                    Submit Your ASMR Video
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- Telegram Community Section -->
-    <section id="telegram" class="py-20 bg-gradient-to-r from-cyan-400 to-blue-400">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-5xl font-bold text-white mb-6">Join Our Telegram Community</h2>
-            <p class="text-xl text-white mb-8">
-                Be part of the Foodilicious family! Connect with fellow food enthusiasts, get exclusive updates, and enjoy special perks.
-            </p>
-            <div class="bg-white rounded-lg shadow-2xl p-8 mb-8 inline-block">
-                <p class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 mb-4">
-                    🎉 10% Discount Coupon 🎉
-                </p>
-                <p class="text-gray-700 text-lg mb-4">
-                    Join our Telegram channel exclusively for members and get an instant 10% discount on your first order!
-                </p>
-                <a href="https://t.me/foodilicious" target="_blank" class="inline-block bg-blue-500 text-white px-10 py-4 rounded-lg text-xl font-bold hover:bg-blue-600 transition transform hover:scale-105">
-                    Join Telegram → 
-                </a>
+    <!-- Telegram Community Section - Premium Loyalty Card -->
+    <section id="community" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 right-0 text-9xl">🍵</div>
+            <div class="absolute bottom-0 left-0 text-9xl">🍓</div>
+        </div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Premium Card Container -->
+            <div class="bg-gradient-to-br from-strawberry-red to-matcha-green rounded-3xl p-8 md:p-16 text-white card-shadow relative overflow-hidden">
+                <!-- Card Background Pattern -->
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute top-4 right-4 text-8xl">✨</div>
+                </div>
+
+                <div class="relative z-10">
+                    <!-- Card Header -->
+                    <div class="flex items-center justify-between mb-8">
+                        <div>
+                            <p class="text-sm font-bold uppercase tracking-widest opacity-90">Exclusive</p>
+                            <h2 class="text-4xl md:text-5xl font-bold">Loyalty Member</h2>
+                        </div>
+                        <div class="text-5xl">💎</div>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="mb-12">
+                        <p class="text-lg opacity-90 mb-4">Join our Telegram community and unlock exclusive benefits</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                                <p class="text-3xl font-bold">10%</p>
+                                <p class="text-sm opacity-75">Instant Discount</p>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-bold">Early Access</p>
+                                <p class="text-sm opacity-75">New Products First</p>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-bold">VIP Events</p>
+                                <p class="text-sm opacity-75">Exclusive Tastings</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coupon Code Display -->
+                    <div class="bg-white bg-opacity-20 rounded-xl p-6 mb-8 backdrop-blur-sm">
+                        <p class="text-sm opacity-75 mb-2">Your Exclusive Code</p>
+                        <p class="text-3xl font-bold font-mono tracking-widest">FOODILICIOUS10</p>
+                        <p class="text-xs opacity-75 mt-2">Use at checkout for instant 10% discount</p>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://t.me/foodilicious" target="_blank" class="flex-1 bg-white text-strawberry px-8 py-4 rounded-xl font-bold text-lg text-center hover:bg-gray-100 transition transform hover:scale-105">
+                            Join Telegram
+                        </a>
+                        <button class="flex-1 border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-strawberry transition transform hover:scale-105">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Decorative Elements -->
+                <div class="absolute bottom-4 right-4 text-6xl opacity-20">🎉</div>
+                <div class="absolute top-1/2 left-4 text-6xl opacity-20">🍋</div>
             </div>
-            <p class="text-white text-lg">
-                Enter code: <span class="bg-white text-blue-500 px-4 py-2 rounded font-bold">FOODILICIOUS10</span> at checkout
-            </p>
+
+            <!-- Social Proof -->
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">Join 5,000+ members in our vibrant community</p>
+                <div class="flex justify-center gap-8">
+                    <div>
+                        <p class="text-2xl font-bold text-strawberry">5K+</p>
+                        <p class="text-sm text-gray-600">Members</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-matcha">98%</p>
+                        <p class="text-sm text-gray-600">Satisfied</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl font-bold text-strawberry">24/7</p>
+                        <p class="text-sm text-gray-600">Support</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="matcha-dark text-white py-8">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <p class="mb-4">&copy; 2026 Foodilicious - Café hopper Christy. All rights reserved.</p>
-            <div class="flex justify-center space-x-6">
-                <a href="https://instagram.com" target="_blank" class="hover:text-green-200 transition">Instagram</a>
-                <a href="https://tiktok.com" target="_blank" class="hover:text-green-200 transition">TikTok</a>
-                <a href="https://t.me/foodilicious" target="_blank" class="hover:text-green-200 transition">Telegram</a>
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span class="text-3xl">🍵</span>
+                        <h3 class="text-xl font-bold text-white">Foodilicious</h3>
+                    </div>
+                    <p class="text-sm text-gray-400">Café hopper Christy's premium beverage destination.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#menu" class="hover:text-strawberry transition">Menu</a></li>
+                        <li><a href="#asmr" class="hover:text-matcha transition">ASMR Challenge</a></li>
+                        <li><a href="#community" class="hover:text-strawberry transition">Community</a></li>
+                    </ul>
+                </div>
+
+                <!-- Follow Us -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">Follow Us</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-strawberry transition">Instagram</a></li>
+                        <li><a href="#" class="hover:text-matcha transition">TikTok</a></li>
+                        <li><a href="https://t.me/foodilicious" target="_blank" class="hover:text-strawberry transition">Telegram</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">Get in Touch</h4>
+                    <p class="text-sm text-gray-400">hello@foodilicious.com</p>
+                    <p class="text-sm text-gray-400 mt-2">+65 1234 5678</p>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-sm text-gray-400">&copy; 2026 Foodilicious - Café hopper Christy. All rights reserved.</p>
+                    <div class="flex gap-6 mt-4 md:mt-0 text-sm text-gray-400">
+                        <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
