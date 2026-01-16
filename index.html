@@ -135,6 +135,28 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Hero Section Styling */
+        .hero-matcha-bg {
+            background: linear-gradient(135deg, rgba(124, 179, 66, 0.08) 0%, rgba(124, 179, 66, 0.04) 100%);
+        }
+
+        .hero-section-left {
+            position: relative;
+        }
+
+        .hero-section-left::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(124, 179, 66, 0.12) 0%, transparent 80%);
+            pointer-events: none;
+        }
+
+        .hero-title {
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
     </style>
 </head>
 <body>
@@ -168,27 +190,34 @@
     </nav>
 
     <!-- Hero Section - Split Screen Design -->
-    <section class="diagonal-section min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-br from-gray-50 to-orange-50 relative overflow-hidden">
-        <div class="diagonal-shape"></div>
+    <section class="diagonal-section min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
+        <div class="absolute inset-0 hero-matcha-bg"></div>
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-20 left-10 text-8xl opacity-40">🍵</div>
+            <div class="absolute bottom-20 right-10 text-9xl opacity-30">🍵</div>
+        </div>
+        
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
-            <!-- Left: Image Section -->
-            <div class="image-hover">
-                <div class="aspect-square rounded-2xl bg-gradient-to-br from-pink-200 to-red-200 flex items-center justify-center text-9xl">
-                    🍓
+            <!-- Left: Image Section with Matcha Gradient -->
+            <div class="hero-section-left">
+                <div class="image-hover">
+                    <div class="aspect-square rounded-2xl bg-gradient-to-br from-pink-200 to-red-200 flex items-center justify-center text-9xl shadow-xl">
+                        🍓
+                    </div>
                 </div>
             </div>
 
             <!-- Right: CTA Section -->
-            <div class="space-y-6">
+            <div class="space-y-8">
                 <div>
-                    <span class="text-strawberry font-bold text-sm uppercase tracking-widest">Welcome to</span>
-                    <h2 class="text-5xl md:text-6xl font-bold text-gray-900 mt-2">
-                        Café hopper <span class="text-strawberry">Christy</span>
+                    <span class="text-strawberry font-bold text-sm uppercase tracking-widest">Brand New Experience</span>
+                    <h2 class="hero-title text-6xl md:text-7xl font-bold text-strawberry mt-3">
+                        Foodilicious
                     </h2>
                 </div>
 
-                <p class="text-xl text-gray-600 leading-relaxed">
-                    Discover the ultimate matcha experience with our handcrafted beverages and premium food selections.
+                <p class="text-lg md:text-xl text-gray-700 leading-relaxed font-medium">
+                    The Ultimate Matcha & Dessert Destination. Handcrafted beverages for the conscientious soul.
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4 pt-4">
@@ -201,12 +230,12 @@
                 </div>
 
                 <!-- Trust Badges -->
-                <div class="flex gap-8 pt-4">
-                    <div class="text-center">
+                <div class="flex gap-8 pt-6">
+                    <div>
                         <p class="text-3xl font-bold text-strawberry">500+</p>
                         <p class="text-sm text-gray-600">Happy Customers</p>
                     </div>
-                    <div class="text-center">
+                    <div>
                         <p class="text-3xl font-bold text-matcha">1K+</p>
                         <p class="text-sm text-gray-600">ASMR Views</p>
                     </div>
