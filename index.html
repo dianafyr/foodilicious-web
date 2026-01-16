@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodilicious - Café hopper Christy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .matcha-green {
+            color: #7cb342;
+        }
+        .matcha-bg {
+            background-color: #c5e1a5;
+        }
+        .matcha-dark {
+            background-color: #7cb342;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 matcha-bg shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold matcha-green">🍵 Foodilicious</h1>
+            <div class="space-x-6">
+                <a href="#menu" class="hover:matcha-green transition">Menu</a>
+                <a href="#asmr" class="hover:matcha-green transition">ASMR Challenge</a>
+                <a href="#telegram" class="hover:matcha-green transition">Community</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="matcha-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 text-8xl">🍵</div>
+            <div class="absolute bottom-10 right-10 text-8xl">🍓</div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-7xl font-bold matcha-green mb-4">Café hopper Christy</h2>
+            <p class="text-2xl text-gray-700 mb-8">Welcome to the ultimate matcha experience!</p>
+            <p class="text-xl text-gray-600 mb-12">Explore our handcrafted beverages and join our vibrant food community.</p>
+            <a href="#menu" class="inline-block matcha-dark text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition">
+                Explore Menu
+            </a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center matcha-green mb-16">Our Signature Menu</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Strawberry Matcha -->
+                <div class="bg-pink-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition transform hover:scale-105">
+                    <div class="bg-gradient-to-r from-pink-300 to-red-300 h-40 flex items-center justify-center text-6xl">
+                        🍓
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-pink-600 mb-2">Strawberry Matcha</h3>
+                        <p class="text-gray-700 mb-4">A delightful blend of premium matcha and fresh strawberry puree. Perfect for a refreshing afternoon treat.</p>
+                        <p class="text-lg font-semibold matcha-green">$6.99</p>
+                    </div>
+                </div>
+
+                <!-- Lemon-zade -->
+                <div class="bg-yellow-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition transform hover:scale-105">
+                    <div class="bg-gradient-to-r from-yellow-300 to-orange-300 h-40 flex items-center justify-center text-6xl">
+                        🍋
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-yellow-600 mb-2">Lemon-zade</h3>
+                        <p class="text-gray-700 mb-4">A zesty and refreshing citrus drink that perfectly complements our matcha selection. Energize your day!</p>
+                        <p class="text-lg font-semibold matcha-green">$5.99</p>
+                    </div>
+                </div>
+
+                <!-- Ice Cream Cakes -->
+                <div class="bg-blue-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition transform hover:scale-105">
+                    <div class="bg-gradient-to-r from-purple-300 to-pink-300 h-40 flex items-center justify-center text-6xl">
+                        🍰
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-purple-600 mb-2">Ice Cream Cakes</h3>
+                        <p class="text-gray-700 mb-4">Indulge in our premium ice cream cakes with matcha, strawberry, or lemon flavors. A sweet ending to every visit.</p>
+                        <p class="text-lg font-semibold matcha-green">$8.99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ASMR Challenge Section -->
+    <section id="asmr" class="py-20 matcha-bg">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center matcha-green mb-8">#FoodiliciousASMRchallenge</h2>
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-12">
+                <p class="text-xl text-gray-700 mb-6">
+                    Join the viral sensation! Experience the calming and satisfying sounds of preparing our signature beverages. 
+                    Record your own ASMR moment with Foodilicious and use #FoodiliciousASMRchallenge to be featured in our community gallery.
+                </p>
+                <ul class="space-y-4 text-lg text-gray-700">
+                    <li class="flex items-start">
+                        <span class="matcha-green mr-4 text-2xl">✓</span>
+                        <span>Capture the soothing sounds of matcha whisking</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="matcha-green mr-4 text-2xl">✓</span>
+                        <span>Record the satisfying pour of our drinks</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="matcha-green mr-4 text-2xl">✓</span>
+                        <span>Share your experience with our community</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Video Gallery Placeholder -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden aspect-video flex items-center justify-center hover:shadow-lg transition">
+                    <div class="text-center">
+                        <p class="text-6xl mb-4">🎬</p>
+                        <p class="text-gray-600 font-semibold">Your ASMR Here</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden aspect-video flex items-center justify-center hover:shadow-lg transition">
+                    <div class="text-center">
+                        <p class="text-6xl mb-4">🎥</p>
+                        <p class="text-gray-600 font-semibold">Community Videos</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden aspect-video flex items-center justify-center hover:shadow-lg transition">
+                    <div class="text-center">
+                        <p class="text-6xl mb-4">📱</p>
+                        <p class="text-gray-600 font-semibold">Share Your Moment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Telegram Community Section -->
+    <section id="telegram" class="py-20 bg-gradient-to-r from-cyan-400 to-blue-400">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-5xl font-bold text-white mb-6">Join Our Telegram Community</h2>
+            <p class="text-xl text-white mb-8">
+                Be part of the Foodilicious family! Connect with fellow food enthusiasts, get exclusive updates, and enjoy special perks.
+            </p>
+            <div class="bg-white rounded-lg shadow-2xl p-8 mb-8 inline-block">
+                <p class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 mb-4">
+                    🎉 10% Discount Coupon 🎉
+                </p>
+                <p class="text-gray-700 text-lg mb-4">
+                    Join our Telegram channel exclusively for members and get an instant 10% discount on your first order!
+                </p>
+                <a href="https://t.me/foodilicious" target="_blank" class="inline-block bg-blue-500 text-white px-10 py-4 rounded-lg text-xl font-bold hover:bg-blue-600 transition transform hover:scale-105">
+                    Join Telegram → 
+                </a>
+            </div>
+            <p class="text-white text-lg">
+                Enter code: <span class="bg-white text-blue-500 px-4 py-2 rounded font-bold">FOODILICIOUS10</span> at checkout
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="matcha-dark text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="mb-4">&copy; 2026 Foodilicious - Café hopper Christy. All rights reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://instagram.com" target="_blank" class="hover:text-green-200 transition">Instagram</a>
+                <a href="https://tiktok.com" target="_blank" class="hover:text-green-200 transition">TikTok</a>
+                <a href="https://t.me/foodilicious" target="_blank" class="hover:text-green-200 transition">Telegram</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
