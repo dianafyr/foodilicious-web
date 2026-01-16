@@ -157,6 +157,179 @@
             letter-spacing: -0.02em;
             line-height: 1.1;
         }
+
+        /* Chatbot Styles */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            font-family: 'Inter', sans-serif;
+            z-index: 999;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #C51E3A, #7CB342);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(197, 30, 58, 0.3);
+            transition: all 0.3s ease;
+            font-size: 28px;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(197, 30, 58, 0.4);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 500px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+        }
+
+        .chatbot-window.active {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #C51E3A, #7CB342);
+            color: white;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-close {
+            cursor: pointer;
+            font-size: 24px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .chatbot-close:hover {
+            opacity: 1;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .message {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            word-wrap: break-word;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message.user .message-bubble {
+            background: #C51E3A;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.bot .message-bubble {
+            background: #f0f0f0;
+            color: #1a1a1a;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chatbot-input-area {
+            padding: 12px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 8px;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.2s;
+        }
+
+        .chatbot-input:focus {
+            outline: none;
+            border-color: #C51E3A;
+        }
+
+        .chatbot-send {
+            background: #C51E3A;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .chatbot-send:hover {
+            background: #7CB342;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 480px) {
+            .chatbot-window {
+                width: calc(100vw - 32px);
+                height: 60vh;
+            }
+        }
     </style>
 </head>
 <body>
@@ -565,5 +738,127 @@
             </div>
         </div>
     </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget">
+        <!-- Chat Toggle Button -->
+        <div class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">
+            💬
+        </div>
+
+        <!-- Chat Window -->
+        <div class="chatbot-window" id="chatbotWindow">
+            <!-- Header -->
+            <div class="chatbot-header">
+                <div>
+                    <h3 class="font-bold">Foodilicious AI</h3>
+                    <p class="text-xs opacity-90">Always here to help!</p>
+                </div>
+                <span class="chatbot-close" onclick="toggleChatbot()">✕</span>
+            </div>
+
+            <!-- Messages Area -->
+            <div class="chatbot-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="message-bubble">
+                        Hey there! 👋 Welcome to Foodilicious! How can I help you today?
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="chatbot-input-area">
+                <input 
+                    type="text" 
+                    class="chatbot-input" 
+                    id="chatInput" 
+                    placeholder="Ask me something..."
+                    onkeypress="handleKeyPress(event)"
+                />
+                <button class="chatbot-send" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chatbot Responses
+        const chatbotResponses = {
+            'menu|product|drink|beverage': 'Our signature menu includes Strawberry Matcha ($6.99), Lemon-zade ($5.99), and Ice Cream Cakes ($8.99). All handcrafted with premium ingredients! 🍵',
+            'price|cost|how much': 'Strawberry Matcha: $6.99 | Lemon-zade: $5.99 | Ice Cream Cakes: $8.99. Great value for premium quality!',
+            'strawberry matcha': 'Strawberry Matcha is our signature drink - a delightful blend of premium matcha whisked with fresh strawberry puree. Perfect for an afternoon treat! 🍓',
+            'lemon|lemonade': 'Lemon-zade is our zesty citrus drink that perfectly complements our matcha selection. Energize your day! 🍋',
+            'ice cream|cake|dessert': 'Our Ice Cream Cakes come in matcha, strawberry, or lemon flavors. A sweet ending to every visit! 🍰',
+            'asmr|challenge|video': 'Join the #FoodiliciousASMRchallenge! Record the soothing sounds of our beverage preparation and share with us. Monthly winners get $50 vouchers! 🎬',
+            'telegram|community|join|discount': 'Join our Telegram community for exclusive 10% discount! Use code FOODILICIOUS10 at checkout. Get early access to new products and VIP events! 💎',
+            'how do i join|community': 'Visit our Telegram at t.me/foodilicious to join 5,000+ members! Get instant 10% off your first order! 🎉',
+            'hello|hi|hey|greetings': 'Hello! Welcome to Foodilicious! 👋 Feel free to ask about our menu, ASMR challenge, or community!',
+            'thank|thanks|thanks for': 'You\'re welcome! Enjoy Foodilicious! 😊',
+            'default': 'That\'s great! Is there anything else I can help you with? Feel free to ask about our menu, ASMR challenge, or community! 😊'
+        };
+
+        function toggleChatbot() {
+            const chatWindow = document.getElementById('chatbotWindow');
+            chatWindow.classList.toggle('active');
+            if (chatWindow.classList.contains('active')) {
+                document.getElementById('chatInput').focus();
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message === '') return;
+
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+
+            // Get bot response
+            const response = getBotResponse(message);
+            
+            // Add bot response with slight delay
+            setTimeout(() => {
+                addMessage(response, 'bot');
+            }, 500);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function addMessage(text, sender) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const bubble = document.createElement('div');
+            bubble.className = 'message-bubble';
+            bubble.textContent = text;
+            
+            messageDiv.appendChild(bubble);
+            chatMessages.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getBotResponse(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+            
+            for (const [keywords, response] of Object.entries(chatbotResponses)) {
+                const keywordArray = keywords.split('|');
+                for (const keyword of keywordArray) {
+                    if (lowerMessage.includes(keyword)) {
+                        return response;
+                    }
+                }
+            }
+            
+            return chatbotResponses.default;
+        }
+    </script>
 </body>
 </html>
